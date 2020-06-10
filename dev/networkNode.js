@@ -47,4 +47,4 @@ app.get("*",(req,res)=>{
 //     '/',
 //     proxy({ target: 'http://localhost:3000', changeOrigin: true })
 //   );
-app.listen(process.env.PORT || 3001)
+app.listen(process.env.PORT || 3001,process.env.HOST || null)
