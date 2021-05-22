@@ -8,8 +8,15 @@ import ForgotPassword from "./screens/forgotPassword";
 import ResetPassword from "./screens/resetPassword";
 import VerifyEmail  from "./screens/verifyEmail";
 import App from "./App"
+import { createMuiTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
 let cookie = new Cookies();
-
+const theme = createMuiTheme({
+    palette: {
+   
+      type: 'dark',
+      
+    },
+  });
 class SwitchRouter extends React.Component{
     state = {verification:false};
     componentDidMount =()=>{
@@ -25,6 +32,7 @@ class SwitchRouter extends React.Component{
     }
     render(){
         return(
+            <ThemeProvider theme={theme}>
             <Fragment>
                 <Header />
                 <Switch >
@@ -36,6 +44,8 @@ class SwitchRouter extends React.Component{
                 <App />
                 </Switch>
             </Fragment>
+            <CssBaseline />
+            </ThemeProvider>
         )
     }
 }

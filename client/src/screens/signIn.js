@@ -18,7 +18,7 @@ export default class SignIn extends React.Component {
           return <center><CircularProgress /></center>
       }
       return (
-          <Button type="sumbit" onSubmit={this.handleLogin} size="small" color="primary">
+          <Button type="submit" onSubmit={this.handleLogin} size="small">
               Login
           </Button>
       )
@@ -118,12 +118,12 @@ export default class SignIn extends React.Component {
             </Typography>
             </CardActions>
             
-          <div style={{display:'flex',flexDirection:'column',justifyContent:'center'}}>
+          <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',padding:8}}>
             
           <span style={{color:'green',fontWeight:'bold'}}>
             Dont Have an Account?
           </span>
-          <Button style={{marginTop:10}} onClick={()=>this.props.history.push("/register")} size="small" color="primary">
+          <Button variant="contained" style={{marginTop:10,width:100}} onClick={()=>this.props.history.push("/register")} size="small">
               Sign Up
               </Button>
               </div>
