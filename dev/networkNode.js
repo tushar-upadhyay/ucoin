@@ -47,4 +47,6 @@ app.get("*",(req,res)=>{
 //     '/',
 //     proxy({ target: 'http://localhost:3000', changeOrigin: true })
 //   );
+
+console.log(process.env.GMAIL_USERNAME)
 app.listen(process.env.PORT || 3001,process.env.HOST || null)
