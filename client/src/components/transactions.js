@@ -23,9 +23,10 @@ export default class  Transactions extends React.Component {
         try{
              let res =await  fetch("/getTransactions");
              res = await res.json();
-             console.log(res)
-             this.setState({data:res})
+             res = JSON.parse(res)
              
+             this.setState({data:res})
+            
         }
         catch(err){
             console.log(err)
@@ -45,11 +46,17 @@ export default class  Transactions extends React.Component {
          if(!data){
              return <div>Loading...</div>
          }
-         data = JSON.parse(data)
+       if(data.length==0){
+           return <center><h4>No Transactions yet..</h4></center>
+       }
+        
         return data.map(res=>{
+            
             return (
-                <React.Fragment>
-                    <ListItem alignItems="flex-start">
+                <div className="list">
+        <List style={{width:'100%'}}>
+                
+                    <ListItem >
                         <ListItemAvatar>
                             {this.decide(res.type)}
                         </ListItemAvatar>
@@ -76,22 +83,22 @@ export default class  Transactions extends React.Component {
                         />
                     </ListItem>
                     <Divider variant="inset" component="li" />
-                </React.Fragment>
+               </List>
+               </div>
             )
         })
     }
     render()
   {
       return (
-    <div style={{position:'sticky',bottom:72,display:'flex',flexDirection:'column',justifyContent:"center",height:400,marginBottom:40}}>
+    <div style={{display:'flex',flexDirection:'column',justifyContent:"center"}}>
     <center>
     <h5 style={{marginTop:10,borderRadius:20,backgroundColor:'lightgreen',width:150}}>Transactions:</h5>
     </center>
-    <div className="list">
-        <List style={{width:'100%',maxWidth:360}}>
+    
+    
         <this.RenderList />
-        </List>
-    </div>
+    
     </div>
   );
 }

@@ -19,7 +19,7 @@ class SwitchRouter extends React.Component{
         }
         
         if(cookie.get('exp_session')){
-            fetch('/auth/checkAuth').then(res=>res.json()).then(res=>res['auth']=='failed'?this.props.history.replace("/login"):this.props.history.replace("/dashboard")).catch(err=>console.log(err));
+            fetch('/auth/checkAuth').then(res=>res.json()).then(res=>res['auth']=='failed'?this.props.history.replace("/login"):this.props.history.replace("/")).catch(err=>console.log(err));
            
         }
     }

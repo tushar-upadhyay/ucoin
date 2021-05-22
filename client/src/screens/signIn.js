@@ -46,7 +46,7 @@ export default class SignIn extends React.Component {
               QRCode.toDataURL(res.publicKey, (err, url)=>{
                 localStorage.setItem('qrcode',String(url));
                 localStorage.setItem('publicKey',res.publicKey);
-                this.props.history.replace('/dashboard',{
+                this.props.history.replace('/',{
                   state:{publicKey:res.publicKey}
                 })
               })

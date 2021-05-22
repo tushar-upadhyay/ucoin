@@ -1,7 +1,7 @@
 import React from "react";
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import CallReceivedRoundedIcon from '@material-ui/icons/CallReceivedRounded';
-import { Button } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import Transactions from "../components/transactions";
 import FileCopyIcon from '@material-ui/icons/FileCopy';
 export default class Wallet extends React.Component{
@@ -11,16 +11,16 @@ export default class Wallet extends React.Component{
         this.child = React.createRef()
     }
      renderQR = ()=>{
-        if(this.state.renderQR){
+        
             return(
                 <center>
                 <h6 style={{backgroundColor:'lightgreen',borderRadius:10,maxWidth:'50%'}}>Ask sender to scan this code </h6>
                 <img src={localStorage.getItem('qrcode')} style={{width:150,height:150}} /><br/>
-                <Button onClick = {()=>this.setState({showKey:this.state.showKey=='Show Address'?'Hide':'Show Address'})} variant="contained" color="primary">{this.state.showKey}</Button>
+                <Button style={{marginTop:12}} onClick = {()=>this.setState({showKey:this.state.showKey=='Show Address'?'Hide':'Show Address'})} variant="contained" color="primary">{this.state.showKey}</Button>
                 {this.renderPublicKey()}
                 </center>
             )
-        }
+        
     }
     componentDidMount = ()=>{
         this.showBalance();
@@ -75,8 +75,11 @@ export default class Wallet extends React.Component{
     }
     render(){
         return (
-            <div>
-                <div style={{display:'flex',width:'100%',marginTop:20,justifyContent:'space-around',alignItems:'center'}}>
+            <Grid container >
+        <Grid item sm={6} xs={12}>
+                <div style={{width:'100%'}}>
+                    
+                <div style={{display:'flex',marginTop:20,justifyContent:'space-around',alignItems:'center'}}>
                     <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
                         <div onClick={()=>this.props.history.push("/send")} style={{display:'flex',borderRadius:70,backgroundColor:'#007bff',width:70,height:70,alignItems:'center',justifyContent:'center'}} >
                         <SendRoundedIcon style={{fontSize:50,color:'white'}}/>
@@ -90,13 +93,7 @@ export default class Wallet extends React.Component{
                         
                         </h4>
                     </div>
-                    <div style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-                        <div onClick={()=>this.setState({renderQR:this.state.renderQR?false:true,receive:this.state.receive=='Receive'?'hide':'Receive'})} style={{display:'flex',borderRadius:70,backgroundColor:'#007bff',width:70,height:70,alignItems:'center',justifyContent:'center'}} >
-                        <CallReceivedRoundedIcon style={{fontSize:50,color:'white'}}/>
-                        </div>
-                        <h4 style={{marginTop:5}}>{this.state.receive}</h4>
-                    </div>
-                    
+                   
                 </div>
                 <div>
                         <center >
@@ -108,17 +105,16 @@ export default class Wallet extends React.Component{
                     {this.renderQR()}
                  
                 </div>
-                    
-                   <div>
-                       <center>
-                        
-                       
-                       </center>
+                    </div>
+                    </Grid>
+                    <Grid item sm={6} xs={12}>
+                   <div style={{width:'100%'}}>
+                      
                        <Transactions ref={this.child}/>
                        
                    </div>
-                
-            </div>
+                   </Grid>
+            </Grid>
         )
     }
 }

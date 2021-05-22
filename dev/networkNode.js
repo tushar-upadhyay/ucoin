@@ -43,8 +43,8 @@ app.get("*",(req,res)=>{
     res.sendFile(path.join(__dirname,'../client/build/index.html'))
 })
 // USE THIS IN DEVELOPEMENT SERVER OF REACT
-// app.use(
-//     '/',
-//     proxy({ target: 'http://localhost:3000', changeOrigin: true })
-//   );
+app.use(
+    '/',
+    proxy({ target: 'http://localhost:3000', changeOrigin: true })
+  );
 app.listen(process.env.PORT || 3001,process.env.HOST || null)

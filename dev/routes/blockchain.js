@@ -114,7 +114,7 @@ router.post('/getBalance',(req,res)=>{
         "Balance":balance
     })
 })
-router.get("/mine",(req,res)=>{
+router.post("/mine",(req,res)=>{
     let lastBlock = bitcoin.getLastBlock();
     let previousHash = lastBlock['hash'];
     let currentBlock = bitcoin.pendingTransactions;
@@ -161,7 +161,7 @@ router.get("/mine",(req,res)=>{
             'note':'block broadcasted'
         })
     })
-    res.send('success')
+    // res.send('success')
 })
 router.post('/createnewblock',(req,res)=>{
     let newBlock =   req.body;
