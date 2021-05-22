@@ -4,6 +4,14 @@ This is a complete implemention of blockchain based crypocurrency using nodejs a
 
 <b>Demo Link : <a href="https://ucointest.herokuapp.com">https://ucointest.herokuapp.com</a></b>
 
+>>Use following test accounts to check the demo
+
+>>>email:tusharrockpg@gmail.com<br>
+  password:tushar
+
+>>>email:tupadhyayxyz@gmail.com<br>
+password:tushar
+
 ## Installation
 
 Run the following commands
