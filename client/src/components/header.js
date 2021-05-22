@@ -4,16 +4,20 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Button } from '@material-ui/core';
-import { withRouter } from 'react-router';
+import { useHistory, withRouter } from 'react-router';
 import Cookie from "universal-cookie";
 let cookie = new Cookie();
 function Header(props){
     let [signedIn,setSignedIn] = useState(false);
+    const history= useHistory()
     useEffect(()=>{
         if(cookie.get('exp_session')){
            setSignedIn(true);
         }
-    },[])
+        else{
+            setSignedIn(false);
+        }
+    },[history.location.key])
     return(
             <AppBar style={{position:'sticky',top:0}} fixed position="static">
                 <Toolbar className="header" style={{display:'flex',marginRight:20,flex:1,justifyContent:'space-between'}}>
