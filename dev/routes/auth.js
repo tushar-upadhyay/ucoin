@@ -127,7 +127,7 @@ redirectToError= (req,res,next)=>{
     else {
         let token = req.query.token;
         try {
-            var decoded = jwt.verify(token, '9993929488@tushar');
+            var decoded = jwt.verify(token, process.env.JWT_SECRET);
             if(decoded){
                 res.locals.token =token;
               
@@ -148,7 +148,7 @@ router.get('/verifyToken',(req,res)=>{
         res.json({'error':'token invalid'})
     }
     try{
-    jwt.verify(req.query.token,'9993929488@tushar')
+    jwt.verify(req.query.token,process.env.JWT_SECRET)
     res.json({'msg':'token valid'})
     }
     catch(err){
@@ -208,7 +208,7 @@ router.post("/resetPassword",redirectToError2,async(req,res)=>{
 router.get("/verify",async(req,res)=>{
     const token = req.query.token;
     try {
-        var decoded = jwt.verify(token, '9993929488@tushar');
+        var decoded = jwt.verify(token, process.env.JWT_SECRET);
         let email = decoded.email
         try{
         let User = await UserModel.findOneAndUpdate({email},{$set:{verified:'true'}});
