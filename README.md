@@ -12,6 +12,28 @@ This is a complete implemention of blockchain based crypocurrency using nodejs a
 >>>email:tupadhyayxyz@gmail.com<br>
 password:tushar
 
+### APIS
+> /auth/registerUser
+
+> /auth/login
+
+> /auth/logout
+
+> /auth/verify
+
+> /auth/resetPassword
+
+> /mine
+>> For Mining the new transactions (expects minerAddress param)
+
+> /blockchain
+>> returns complete blockchain as JSON
+
+> /getTransactions 
+>> returns transactions (auth required)
+
+> /getBalance
+>> returns balance (auth required)
 ## Installation
 
 Run the following commands
