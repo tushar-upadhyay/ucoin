@@ -28,6 +28,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.8.1",
     "nodemailer": "^6.4.2",
+    "nodemailer-mailgun-transport": "^2.1.4",
     "nodemailer-smtp-transport": "^2.7.4",
     "nodemon": "^2.0.1",
     "npx": "^10.2.0",

@@ -1,10 +1,12 @@
 const nodemailer = require('nodemailer');
-var smtpTransport = require('nodemailer-smtp-transport');
-const transporter = nodemailer.createTransport(smtpTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.GMAIL_USERNAME,
-        pass: process.env.PASSWORD // naturally, replace both with your real credentials or an application-specific password
+const mg = require('nodemailer-mailgun-transport')
+const auth = {
+    auth:{
+        api_key:process.env.API_KEY_MAILGUN,
+        domain:process.env.DOMAIN
     }
-}));
+}
+
+
+const transporter = nodemailer.createTransport(mg(auth));
 module.exports = transporter;

@@ -10,13 +10,13 @@ import VerifyEmail  from "./screens/verifyEmail";
 import App from "./App"
 import { createMuiTheme, CssBaseline, ThemeProvider } from "@material-ui/core";
 let cookie = new Cookies();
-const theme = createMuiTheme({
-    palette: {
+// const theme = createMuiTheme({
+//     palette: {
    
-      type: 'dark',
+//       type: 'dark',
       
-    },
-  });
+//     },
+//   });
 class SwitchRouter extends React.Component{
     state = {verification:false};
     componentDidMount =()=>{
@@ -32,7 +32,7 @@ class SwitchRouter extends React.Component{
     }
     render(){
         return(
-            <ThemeProvider theme={theme}>
+            <ThemeProvider>
             <Fragment>
                 <Header />
                 <Switch >

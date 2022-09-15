@@ -66,7 +66,6 @@ router.post("/forgetPassword",async(req,res)=>{
     try{
         let User = await UserModel.findOne({email})
         if(User){
-            console.log(User)
             sendForgetPasswordEmail(email,()=>res.json({'msg':'Email sent!'}),()=>res.json({'error':'something went wrong'}));
         }
         else{

@@ -1,13 +1,14 @@
-var jwt = require('jsonwebtoken');
-var transporter = require('./transporter');
-var {resetLink} = require('./urls');
+const jwt = require('jsonwebtoken');
+const transporter = require('./transporter');
+const {resetLink} = require('./urls');
 module.exports = function sendForgetPasswordEmail(email,success,error){
-var token = jwt.sign({email}, process.env.JWT_SECRET,{expiresIn:'5m'});
-console.log('token',token)
+    console.log('i ran')
+const token = jwt.sign({email}, process.env.JWT_SECRET,{expiresIn:'5m'});
+
 // let url = process.env.NODE_ENV=="development"?"http://localhost:3000":"https://ucointest.herokuapp.com";
 let link = `${resetLink}?token=${token}`
 const mailOptions = {
-    from: 'naukrialertshelp@gmail.com',
+    from: 'tusharrockpg@gmail.com',
     to: email,
     subject: 'Verify Email',
     html:`

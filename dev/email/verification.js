@@ -1,11 +1,11 @@
 const transporter = require('./transporter');
-var jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 let {verificationLink} = require('./urls');
 module.exports = function sendVerification(email,success,error){
 var token = jwt.sign({email}, process.env.JWT_SECRET,{expiresIn:'1h'});
 let link = `${verificationLink}?token=${token}`
 const mailOptions = {
-    from: 'naukrialertshelp@gmail.com',
+    from: 'tusharrockpg@gmail.com', 
     to: email,
     subject: 'Verify Email',
     html:`

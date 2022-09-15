@@ -115,6 +115,7 @@ router.post('/getBalance',(req,res)=>{
     })
 })
 router.post("/mine",(req,res)=>{
+   
     let lastBlock = bitcoin.getLastBlock();
     let previousHash = lastBlock['hash'];
     let currentBlock = bitcoin.pendingTransactions;
@@ -122,6 +123,7 @@ router.post("/mine",(req,res)=>{
     const hash = bitcoin.hash(previousHash,currentBlock,nounce);
     let newBlock = bitcoin.createNewBlock(nounce,previousHash,hash);
     let minerAddress = req.query.minerAddress; 
+    console.log(minerAddress)
     bitcoin.pendingTransactions.push({
         "sender":null,
         "amount":100,
